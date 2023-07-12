@@ -38,6 +38,9 @@ $ npm install
 # development
 $ npm run start
 
+# debug mode
+$ npm run start:debug
+
 # watch mode
 $ npm run start:dev
 
