@@ -1,0 +1,191 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlserver"
+  url      = env("DATABASE_URL")
+}
+
+model LogIntegracaoProtheus {
+  id       Int      @id @default(autoincrement())
+  endPoint String   @db.VarChar(155)
+  json     String   @db.VarChar(Max)
+  status   Int
+  data     DateTime
+
+  @@map("logIntegracaoProtheus")
+}
+
+model ProtheusArmazem {
+  id                     Int     @id @default(autoincrement())
+  name                   String  @db.VarChar(50)
+  externalCode           String  @db.VarChar(50)
+  isActive               Boolean
+  companyExternalCode    String  @db.VarChar(50)
+  companyName            String  @db.VarChar(50)
+  subsidiaryExternalCode String  @db.VarChar(50)
+  subsidiaryName         String  @db.VarChar(50)
+
+  @@map("protheusarmazem")
+}
+
+model ProtheusCategoria {
+  id                          Int     @id @default(autoincrement())
+  name                        String  @db.VarChar(50)
+  catalogUrlVideo             String  @db.VarChar(50)
+  catalogContent              String  @db.VarChar(50)
+  externalCode                String  @db.VarChar(50)
+  isActive                    Boolean
+  companyExternalCode         String  @db.VarChar(50)
+  companyName                 String  @db.VarChar(50)
+  subsidiaryExternalCode      String  @db.VarChar(50)
+  subsidiaryName              String  @db.VarChar(100)
+  productCategoryExternalCode String  @db.VarChar(50)
+
+  @@map("protheuscategoria")
+}
+
+model ProtheusClassificacao {
+  id                     Int     @id @default(autoincrement())
+  name                   String  @db.VarChar(50)
+  externalCode           String  @db.VarChar(50)
+  isActive               Boolean
+  companyExternalCode    String  @db.VarChar(50)
+  companyName            String  @db.VarChar(50)
+  subsidiaryExternalCode String  @db.VarChar(50)
+  subsidiaryName         String  @db.VarChar(100)
+
+  @@map("protheusclassificacao")
+}
+
+model ProtheusColecao {
+  id                     Int     @id @default(autoincrement())
+  name                   String  @db.VarChar(50)
+  externalCode           String  @db.VarChar(50)
+  isActive               Boolean
+  companyExternalCode    String  @db.VarChar(50)
+  companyName            String  @db.VarChar(50)
+  subsidiaryExternalCode String  @db.VarChar(50)
+  subsidiaryName         String  @db.VarChar(50)
+
+  @@map("protheuscolecao")
+}
+
+model ProtheusFornecedor {
+  id                     Int     @id @default(autoincrement())
+  externalCodeColecao    String  @db.VarChar(50)
+  productSupplierName    String  @db.VarChar(50)
+  productSupplierCode    String  @db.VarChar(50)
+  externalCode           String  @db.VarChar(50)
+  isActive               Boolean
+  productExternalCode    String  @db.VarChar(50)
+  supplierExternalCode   String  @db.VarChar(50)
+  supplierStoreCode      String  @db.VarChar(50)
+  companyExternalCode    String  @db.VarChar(50)
+  subsidiaryExternalCode String  @db.VarChar(50)
+
+  @@map("protheusfornecedor")
+}
+
+model ProtheusGrupo {
+  id                     Int     @id @default(autoincrement())
+  name                   String  @db.VarChar(50)
+  externalCode           String  @db.VarChar(50)
+  isActive               Boolean
+  companyExternalCode    String  @db.VarChar(50)
+  companyName            String  @db.VarChar(50)
+  subsidiaryExternalCode String  @db.VarChar(50)
+  subsidiaryName         String  @db.VarChar(50)
+
+  @@map("protheusgrupo")
+}
+
+model ProtheusGrupoTrib {
+  id                     Int     @id @default(autoincrement())
+  name                   String  @db.VarChar(50)
+  externalCode           String  @db.VarChar(50)
+  isActive               Boolean
+  companyExternalCode    String  @db.VarChar(50)
+  companyName            String  @db.VarChar(50)
+  subsidiaryExternalCode String  @db.VarChar(50)
+  subsidiaryName         String  @db.VarChar(50)
+
+  @@map("protheusgrupotrib")
+}
+
+model ProtheusIPIIncm {
+  id                     Int     @id @default(autoincrement())
+  name                   String  @db.VarChar(50)
+  externalCode           String  @db.VarChar(50)
+  isActive               Boolean
+  companyExternalCode    String  @db.VarChar(50)
+  subsidiaryExternalCode String  @db.VarChar(50)
+
+  @@map("protheusipincm")
+}
+
+model ProtheusLinha {
+  id                     Int     @id @default(autoincrement())
+  companyExternalCode    String  @db.VarChar(50)
+  companyName            String  @db.VarChar(50)
+  subsidiaryExternalCode String  @db.VarChar(50)
+  subsidiaryName         String  @db.VarChar(50)
+  collectionexternalCode String  @db.VarChar(50)
+  linedescription        String  @db.VarChar(50)
+  isActive               Boolean
+  exclusivity            String  @db.VarChar(5)
+  CoatingLine            String  @db.VarChar(5)
+
+  @@map("protheuslinha")
+}
+
+model ProtheusLoja {
+  id       Int    @id @default(autoincrement())
+  idLoja   String @db.VarChar(50)
+  nomeLoja String @db.VarChar(50)
+
+  @@map("protheusLoja")
+}
+
+model ProtheusShapes {
+  id                     Int     @id @default(autoincrement())
+  name                   String  @db.VarChar(50)
+  externalCode           String  @db.VarChar(50)
+  isActive               Boolean
+  companyExternalCode    String  @db.VarChar(50)
+  companyName            String  @db.VarChar(50)
+  subsidiaryExternalCode String  @db.VarChar(50)
+  subsidiaryName         String  @db.VarChar(50)
+  numberofdimensions     String  @db.VarChar(10)
+  Dimension1             String  @db.VarChar(50)
+  Dimension2             String  @db.VarChar(50)
+  Dimension3             String  @db.VarChar(50)
+
+  @@map("protheusshapes")
+}
+
+model ProtheusTipo {
+  id                     Int     @id @default(autoincrement())
+  name                   String  @db.VarChar(50)
+  externalCode           String  @db.VarChar(50)
+  isActive               Boolean
+  companyExternalCode    String  @db.VarChar(50)
+  subsidiaryExternalCode String  @db.VarChar(50)
+
+  @@map("protheustipo")
+}
+
+model ProtheusUnidade {
+  id                     Int     @id @default(autoincrement())
+  name                   String  @db.VarChar(50)
+  externalCode           String  @db.VarChar(50)
+  isActive               Boolean
+  subsidiaryExternalCode String  @db.VarChar(50)
+  companyExternalCode    String  @db.VarChar(50)
+
+  @@map("protheusunidade")
+}
