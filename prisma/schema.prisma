@@ -2,7 +2,7 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider = "prisma-client-js"
+  provider   = "prisma-client-js"
   engineType = "library"
 }
 
@@ -189,4 +189,13 @@ model ProtheusUnidade {
   companyExternalCode    String  @db.VarChar(50)
 
   @@map("protheusunidade")
+}
+
+model Usuarios {
+  id         Int      @id @default(autoincrement())
+  backoffice Boolean?
+  idColecao  Int
+  idPerfil   Int
+
+  @@map("usuarios")
 }
