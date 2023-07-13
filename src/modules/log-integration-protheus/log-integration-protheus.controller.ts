@@ -13,10 +13,4 @@ export class LogIntegrationProtheusController {
   async getGrid() {
     return  this.logIntegrationProtheusService.getTop2000();
   }
-
-  
-  @Get('grid')
-  async getGrid2() {
-    return  this.logIntegrationProtheusService.getTop2000();
-  }
 }
