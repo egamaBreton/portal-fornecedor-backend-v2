@@ -5,8 +5,9 @@ import * as dotenv from 'dotenv'
 dotenv.config() 
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
-  console.log(`The connection URL is ${process.env.DATABASE_URL}`)
+  const app = await NestFactory.create(AppModule, {
+    logger: false,
+  });
   app.setGlobalPrefix('api');
   await app.listen(3000);
 }
