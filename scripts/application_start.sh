@@ -17,4 +17,4 @@ npm install
 #start our node app in the background
 npm run deploy
 
-pm2 start dist/main
+pm2 start dist/main.js
